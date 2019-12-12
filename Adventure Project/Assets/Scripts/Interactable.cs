@@ -6,13 +6,17 @@ public class Interactable : MonoBehaviour
     public float radius = 3f;
     public Transform interactionTransform;
 
-    public GameObject player;
+    GameObject player;
 
     public bool hasInteracted = false;
 
+    private void Start()
+    {
+        player = GameObject.Find("PlayerCharacter");
+    }
+
     private void Update()
     {
-        //float distance = Vector3.Distance();
     }
 
     private void OnDrawGizmosSelected()
@@ -27,9 +31,10 @@ public class Interactable : MonoBehaviour
 
     }
 
-        public virtual void Interact()
+    public virtual void Interact()
     {
         //Interaction action goes here
+        Debug.Log("You haven't set the interaction, stupid!");
     }
 
 
