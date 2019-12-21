@@ -11,6 +11,10 @@ public class PlayerController : MonoBehaviour
 
     Interactable focus;
 
+    //public DialogueManager dialogueManager;
+    public bool interacting = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,27 +26,30 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (interacting == false)
         {
-            if (focus != null)
+            if (Input.GetKeyDown(KeyCode.E))
             {
-                focus.Interact();
+                if (focus != null)
+                {
+                    focus.Interact();
+                }
+
+                //Ray ray = cam.ScreenPointToRay(transform.position);
+                //RaycastHit hit;
+
+                //if (Physics.Raycast(ray, out hit, 100))
+                //{
+                //    // Check if we hit an interactable
+                //    Interactable interactable = hit.collider.GetComponent<Interactable>();
+
+                //    // If we did, interact with it
+                //    if (interactable != null)
+                //    {
+                //        interactable.Interact();
+                //    }
+                //}
             }
-            
-            //Ray ray = cam.ScreenPointToRay(transform.position);
-            //RaycastHit hit;
-
-            //if (Physics.Raycast(ray, out hit, 100))
-            //{
-            //    // Check if we hit an interactable
-            //    Interactable interactable = hit.collider.GetComponent<Interactable>();
-
-            //    // If we did, interact with it
-            //    if (interactable != null)
-            //    {
-            //        interactable.Interact();
-            //    }
-            //}
         }
     }
 
@@ -63,5 +70,19 @@ public class PlayerController : MonoBehaviour
     {
         focus = null;
     }
+
+    public void ControlToggle()
+    {
+        if (interacting == false)
+        {
+            interacting = true;
+            motor.enabled = !motor.enabled;
+        }
+        else
+        {
+            interacting = false;
+            motor.enabled = !motor.enabled;
+        }
+}
 
 }
