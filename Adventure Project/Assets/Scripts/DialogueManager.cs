@@ -69,6 +69,21 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = sentence;
     }
 
+    public void DisplayNextSentence(int choice)
+    {
+        if (sentences.Count == 0)
+        {
+            EndDialogue();
+            return;
+        }
+
+        // Add choice functionality
+
+        string sentence = sentences.Dequeue();
+        //Debug.Log(sentence);
+        dialogueText.text = sentence;
+    }
+
     void EndDialogue()
     {
         //Debug.Log("End of conversation.");

@@ -5,6 +5,7 @@ using UnityEngine;
 public class InteractDialogue : Interactable
 {
     public Dialogue dialogue;
+    public DialogueNode[] dialogueTree;
 
     public override void Interact()
     {

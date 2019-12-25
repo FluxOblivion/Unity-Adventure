@@ -9,4 +9,7 @@ public class Dialogue
 
     [TextArea(3,10)]
     public string[] sentences;
+
+    // For dialogue choice trees?
+    public int[] choices;
 }
