@@ -11,5 +11,5 @@ public class Dialogue
     public string[] sentences;
 
     // For dialogue choice trees?
-    public int[] choices;
+    //public int[] choices;
 }

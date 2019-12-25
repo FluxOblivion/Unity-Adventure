@@ -12,10 +12,12 @@ public class DialogueNode
     public string sentence;
 
     public bool doAction = false;
+    public ScriptedAction action;
 
     public void DialogueAction ()
     {
         // Do dialogue action when reaching this node if doAction is true.
+        action.DoAction();
     }
 
 

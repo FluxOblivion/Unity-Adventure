@@ -763,7 +763,6 @@ MonoBehaviour:
     sentences:
     - A strange relic of the past.
     - I wonder what it was used for...
-    choices: 
   dialogueTree:
   - characterImage: {fileID: 0}
     name: 
@@ -7689,7 +7688,6 @@ MonoBehaviour:
     - Wow, this is completely different from the other one.
     - Why would they even keep that relic to the left? This one is so much better.
     - Is this dialogue too forced...? Maybe.
-    choices: 
   dialogueTree: []
 --- !u!135 &1508668710
 SphereCollider:
