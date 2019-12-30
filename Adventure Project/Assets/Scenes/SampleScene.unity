@@ -758,20 +758,7 @@ MonoBehaviour:
   radius: 3
   interactionTransform: {fileID: 401460450}
   hasInteracted: 0
-  dialogue:
-    name: Ancient Relic
-    sentences:
-    - A strange relic of the past.
-    - I wonder what it was used for...
-  dialogueTree:
-  - characterImage: {fileID: 0}
-    name: 
-    sentence: 
-    doAction: 0
-  - characterImage: {fileID: 0}
-    name: 
-    sentence: 
-    doAction: 0
+  dialogue: {fileID: 11400000, guid: e871286686bd8234aa05ff0218e0cfc3, type: 2}
 --- !u!135 &401460447
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -7682,13 +7669,7 @@ MonoBehaviour:
   radius: 3
   interactionTransform: {fileID: 1508668713}
   hasInteracted: 0
-  dialogue:
-    name: Different Relic
-    sentences:
-    - Wow, this is completely different from the other one.
-    - Why would they even keep that relic to the left? This one is so much better.
-    - Is this dialogue too forced...? Maybe.
-  dialogueTree: []
+  dialogue: {fileID: 11400000, guid: 6fd916553e73e3746900b2dba2bdad74, type: 2}
 --- !u!135 &1508668710
 SphereCollider:
   m_ObjectHideFlags: 0

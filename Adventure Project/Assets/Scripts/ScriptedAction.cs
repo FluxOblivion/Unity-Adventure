@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class ScriptedAction
+[CreateAssetMenu(fileName = "NewScriptedAction", menuName = "DialogueAction")]
+public class ScriptedAction : ScriptableObject
 {
     public virtual void DoAction()
     {

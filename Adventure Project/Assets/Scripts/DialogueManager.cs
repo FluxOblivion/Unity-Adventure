@@ -6,19 +6,37 @@ using TMPro;
 
 public class DialogueManager : MonoBehaviour
 {
+    #region Singleton Initialize
+    public static DialogueManager instance;
+    private void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.Log("Warning! more than one DialogueManager!");
+        } else
+        {
+            instance = this;
+        }
+    }
+
+    #endregion
+
     public PlayerController player;
     public Canvas dialogueBox;
     CanvasGroup dialogueVisibility;
 
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
+    //Add portrait variable
 
     private Queue<string> sentences;
+    private Queue<DialogueNode> nodes;
     
     // Start is called before the first frame update
     void Start()
     {
         sentences = new Queue<string>();
+        nodes = new Queue<DialogueNode>();
         dialogueVisibility = dialogueBox.GetComponent<CanvasGroup>();
     }
 
@@ -39,12 +57,18 @@ public class DialogueManager : MonoBehaviour
 
         player.ControlToggle();
 
-        nameText.text = dialogue.name;
+        //nameText.text = dialogue.name;
 
-        sentences.Clear();
-        foreach(string sentence in dialogue.sentences)
+        //sentences.Clear();
+        //foreach(string sentence in dialogue.sentences)
+        //{
+        //    sentences.Enqueue(sentence);
+        //}
+
+        nodes.Clear();
+        foreach(DialogueNode node in dialogue.dialogueTree)
         {
-            sentences.Enqueue(sentence);
+            nodes.Enqueue(node);
         }
 
         dialogueVisibility.alpha = 1f;
@@ -58,31 +82,49 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextSentence()
     {
-        if (sentences.Count == 0)
+        //if (sentences.Count == 0)
+        //{
+        //    EndDialogue();
+        //    return;
+        //}
+
+        //string sentence = sentences.Dequeue();
+        ////Debug.Log(sentence);
+        //dialogueText.text = sentence;
+
+        if (nodes.Count == 0)
         {
             EndDialogue();
             return;
         }
 
-        string sentence = sentences.Dequeue();
-        //Debug.Log(sentence);
-        dialogueText.text = sentence;
-    }
+        DialogueNode currentNode = nodes.Dequeue();
 
-    public void DisplayNextSentence(int choice)
-    {
-        if (sentences.Count == 0)
+       if (currentNode.doAction == true)
         {
-            EndDialogue();
-            return;
+            currentNode.action.DoAction();
         }
 
-        // Add choice functionality
-
-        string sentence = sentences.Dequeue();
-        //Debug.Log(sentence);
-        dialogueText.text = sentence;
+        nameText.text = currentNode.name;
+        dialogueText.text = currentNode.sentence;
+        // Set portrait
     }
+
+    //public void DisplayNextSentence(int choice)
+    //{
+    //    if (sentences.Count == 0)
+    //    {
+    //        EndDialogue();
+    //        return;
+    //    }
+
+    //    // Add choice functionality
+
+    //    string sentence = sentences.Dequeue();
+    //    //Debug.Log(sentence);
+    //    dialogueText.text = sentence;
+
+    //}
 
     void EndDialogue()
     {

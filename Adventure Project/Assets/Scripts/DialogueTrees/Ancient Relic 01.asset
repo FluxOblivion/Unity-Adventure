@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcfdde3cfa8849849ba621200b69ac43, type: 3}
+  m_Name: Ancient Relic 01
+  m_EditorClassIdentifier: 
+  dialogueTree:
+  - characterImage: {fileID: 0}
+    name: Ancient Relic
+    sentence: A relic peserved from ancient times.
+    doAction: 0
+    action: {fileID: 0}
+  - characterImage: {fileID: 0}
+    name: Character
+    sentence: I wonder what it was used for...
+    doAction: 1
+    action: {fileID: 11400000, guid: 126ce4bcd7ac5c74c8f03f0bfd3ff8ac, type: 2}

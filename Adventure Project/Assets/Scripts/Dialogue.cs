@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-public class Dialogue
+[CreateAssetMenu(fileName = "NewDialogue", menuName = "Dialogue")]
+public class Dialogue : ScriptableObject
 {
-    public string name;
+    //public string name;
 
-    [TextArea(3,10)]
-    public string[] sentences;
+    //[TextArea(3,10)]
+    //public string[] sentences;
 
-    // For dialogue choice trees?
-    //public int[] choices;
+    public DialogueNode[] dialogueTree;
+
+
 }
