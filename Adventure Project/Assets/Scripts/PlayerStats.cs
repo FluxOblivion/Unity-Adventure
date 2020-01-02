@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class PlayerStats : MonoBehaviour
 {
+    public PlayerManager manager;
+
     public float playerHealth = 100;
     public float playerArmour = 0;
 
@@ -14,6 +17,8 @@ public class PlayerStats : MonoBehaviour
     void Start()
     {
         //playerHealth = 100;
+        manager = GetComponent<PlayerManager>();
+        manager.UpdateHealthbar(playerHealth);
     }
 
     // Update is called once per frame
@@ -21,7 +26,7 @@ public class PlayerStats : MonoBehaviour
     {
         if (playerHealth <= 0)
         {
-            playerDeath();
+            manager.playerDeath();
         }
     }
 
@@ -30,7 +35,7 @@ public class PlayerStats : MonoBehaviour
         if (hit.collider.name == "DeathPlane")
         {
             //playerHealth -= 10;
-            playerDeath();
+            manager.playerDeath();
             //Debug.Log("Player took 10 fall damage.");
         }
 
@@ -45,6 +50,7 @@ public class PlayerStats : MonoBehaviour
             {
                 playerHealth -= (10 - playerArmour);
                 Debug.Log(playerHealth + " health.");
+                manager.UpdateHealthbar(playerHealth);
 
                 damageDelay = true;
                 yield return new WaitForSeconds(1.5f);
@@ -53,8 +59,8 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    void playerDeath()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+    //void playerDeath()
+    //{
+    //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    //}
 }
