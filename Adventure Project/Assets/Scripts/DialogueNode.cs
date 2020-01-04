@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public class DialogueNode
 {
-    public Texture characterImage;
+    public Sprite characterImage;
     public string name;
 
     [TextArea(3, 10)]
