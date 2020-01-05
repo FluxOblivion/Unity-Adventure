@@ -27,7 +27,9 @@ public class DialogueManager : MonoBehaviour
 
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
-    public Image portrait;
+    public Image portraitLeft;
+    public Image portraitRight;
+    public Sprite placeholderPortrait;
     //Add portrait variable
 
     private Queue<string> sentences;
@@ -108,7 +110,22 @@ public class DialogueManager : MonoBehaviour
 
         nameText.text = currentNode.name;
         dialogueText.text = currentNode.sentence;
-        //portrait = currentNode.characterImage;
+
+        if (currentNode.portraitLeft == null)
+        {
+            portraitLeft.sprite = placeholderPortrait;
+        } else
+        {
+            portraitLeft.sprite = currentNode.portraitLeft;
+        }
+        if (currentNode.portraitRight == null)
+        {
+            portraitRight.sprite = placeholderPortrait;
+        }
+        else
+        {
+            portraitRight.sprite = currentNode.portraitRight;
+        }
         // Set portrait
     }
 

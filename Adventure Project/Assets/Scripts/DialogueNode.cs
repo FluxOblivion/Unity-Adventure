@@ -6,6 +6,8 @@ using UnityEngine;
 public class DialogueNode
 {
     public Sprite characterImage;
+    public Sprite portraitLeft;
+    public Sprite portraitRight;
     public string name;
 
     [TextArea(3, 10)]

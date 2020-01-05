@@ -14,16 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueTree:
   - characterImage: {fileID: 0}
+    portraitLeft: {fileID: 21300000, guid: 779464389aaa54247935f03468ea20df, type: 3}
+    portraitRight: {fileID: 0}
     name: DIFFERENT Relic
     sentence: Wow, look at this!
     doAction: 0
     action: {fileID: 0}
   - characterImage: {fileID: 0}
+    portraitLeft: {fileID: 0}
+    portraitRight: {fileID: 21300000, guid: 3c857bb345d85f24f8244e069d16016d, type: 3}
     name: DIFFERENT Relic
     sentence: It's SO much cooler than the relic on the left.
     doAction: 0
     action: {fileID: 0}
   - characterImage: {fileID: 0}
+    portraitLeft: {fileID: 21300000, guid: 779464389aaa54247935f03468ea20df, type: 3}
+    portraitRight: {fileID: 0}
     name: Character
     sentence: Too forced...? Maybe.
     doAction: 0

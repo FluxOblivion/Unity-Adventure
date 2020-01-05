@@ -14,11 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueTree:
   - characterImage: {fileID: 0}
+    portraitLeft: {fileID: 0}
+    portraitRight: {fileID: 0}
     name: Ancient Relic
     sentence: A relic peserved from ancient times.
     doAction: 0
     action: {fileID: 0}
-  - characterImage: {fileID: 2800000, guid: 779464389aaa54247935f03468ea20df, type: 3}
+  - characterImage: {fileID: 0}
+    portraitLeft: {fileID: 21300000, guid: 779464389aaa54247935f03468ea20df, type: 3}
+    portraitRight: {fileID: 0}
     name: Character
     sentence: I wonder what it was used for...
     doAction: 1
