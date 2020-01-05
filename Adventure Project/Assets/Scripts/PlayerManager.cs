@@ -21,6 +21,7 @@ public class PlayerManager : MonoBehaviour
     PlayerStats stats;
     public GameObject player;
     public TextMeshProUGUI healthIndicator;
+    public TextMeshProUGUI manaIndicator;
 
     public void Start()
     {
@@ -30,6 +31,11 @@ public class PlayerManager : MonoBehaviour
     public void UpdateHealthbar(float newHealth)
     {
         healthIndicator.text = newHealth.ToString();
+    }
+
+    public void UpdateManabar(float newMana)
+    {
+        manaIndicator.text = newMana.ToString();
     }
 
     public void playerDeath()

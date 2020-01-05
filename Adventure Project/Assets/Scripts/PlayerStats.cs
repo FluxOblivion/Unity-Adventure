@@ -9,6 +9,7 @@ public class PlayerStats : MonoBehaviour
     public PlayerManager manager;
 
     public float playerHealth = 100;
+    public float playerMana = 100;
     public float playerArmour = 0;
 
     public bool damageDelay = false;
@@ -19,6 +20,7 @@ public class PlayerStats : MonoBehaviour
         //playerHealth = 100;
         manager = GetComponent<PlayerManager>();
         manager.UpdateHealthbar(playerHealth);
+        manager.UpdateManabar(playerMana);
     }
 
     // Update is called once per frame
