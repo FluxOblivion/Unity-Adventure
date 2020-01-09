@@ -21,7 +21,7 @@ MonoBehaviour:
     doAction: 0
     action: {fileID: 0}
   - characterImage: {fileID: 0}
-    portraitLeft: {fileID: 21300000, guid: 779464389aaa54247935f03468ea20df, type: 3}
+    portraitLeft: {fileID: 21300000, guid: 26a701a93accb814994e6583949d353d, type: 3}
     portraitRight: {fileID: 0}
     name: Character
     sentence: I wonder what it was used for...
