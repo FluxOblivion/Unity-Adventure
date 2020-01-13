@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyStats : MonoBehaviour
 {
-    public float enemyHealth = 50f;
+    public float maxHealth = 50f;
+    float currentHealth;
     public float enemyArmour = 0;
     public float enemyDamage;
 
@@ -13,7 +14,7 @@ public class EnemyStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        currentHealth = maxHealth;
     }
 
     // Update is called once per frame
@@ -21,18 +22,27 @@ public class EnemyStats : MonoBehaviour
     {
         if (Input.GetKeyDown("l"))
         {
-            enemyHealth -= (10f - enemyArmour);
-            Debug.Log(enemyHealth + " health left.");
+            TakeDamage(10f);
         }
 
-        if (enemyHealth <= 0)
+        if (currentHealth <= 0)
         {
             enemyDeath();
         }
     }
 
+    public void TakeDamage(float damageTaken)
+    {
+        currentHealth -= (damageTaken - enemyArmour);
+        Debug.Log(enemyObj.name + " has " + currentHealth + " health left.");
+
+        // Play hurt animation
+    }
+
     void enemyDeath()
     {
+        // Die animation
+
         Object.Destroy(enemyObj, 0f);
         Debug.Log("Enemy has been slain.");
     }

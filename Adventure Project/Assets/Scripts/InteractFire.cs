@@ -29,7 +29,7 @@ public class InteractFire : Interactable
 
     public override void Interact()
     {
-        base.Interact();
+        //base.Interact();
 
         if (fireParticles.isPlaying)
         {
