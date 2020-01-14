@@ -10,10 +10,13 @@ public class InteractButton : Interactable
     public Vector3 openPosition;
     public Vector3 closedPosition;
 
+    public Animator animator;
+
     public void Start()
     {
         //closedPosition = interactObject.transform.position;
         //interactGate = GetComponent<GameObject>();
+        animator = GetComponent<Animator>();
     }
 
     public override void Interact()
@@ -27,6 +30,7 @@ public class InteractButton : Interactable
             interactGate.transform.position += openPosition;
 
             hasInteracted = true;
+            //animator.DoorOpen = true;
             //Debug.Log("Gate is open!");
         } else
         {
