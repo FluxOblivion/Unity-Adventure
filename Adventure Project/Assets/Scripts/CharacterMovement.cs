@@ -30,12 +30,14 @@ public class CharacterMovement : MonoBehaviour
     public float gravity = 30f;
 
     public CharacterController controller;
+    public Animator animator;
 
 
     //  Start is called before the first frame update
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        animator = GetComponent<Animator>();
     }
 
     //  Update is called once per frame
@@ -54,6 +56,15 @@ public class CharacterMovement : MonoBehaviour
         //  Getting player input Vectors and adding to new position
         float inputX = Input.GetAxis("Horizontal");
         float inputZ = Input.GetAxis("Vertical");
+
+        //Check for player input to enable animations
+        if (inputX != 0 || inputZ != 0)
+        {
+            animator.SetInteger("isMoving", 1);
+        } else
+        {
+            animator.SetInteger("isMoving", 0);
+        }
 
         float moveX = inputX * moveSpeed * Time.deltaTime;
         float moveZ = inputZ * moveSpeed * Time.deltaTime;

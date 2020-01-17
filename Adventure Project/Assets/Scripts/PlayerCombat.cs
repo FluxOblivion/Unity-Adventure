@@ -24,7 +24,7 @@ public class PlayerCombat : MonoBehaviour
     void Attack()
     {
         // Play attack animation
-
+        animator.SetTrigger("Attack");
         // Detect enemies in range of attack
         Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayers);
 
