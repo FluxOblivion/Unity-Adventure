@@ -21,6 +21,9 @@ ModelImporter:
   - first:
       74: 884574213119434764
     second: Character Rig|Character Throw
+  - first:
+      74: -43324754977125150
+    second: Character Rig|Character Walk (1)
   externalObjects:
   - first:
       type: UnityEngine:Material
@@ -147,11 +150,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Character Rig|Character Run
-      takeName: Character Rig|Character Run
+      name: Character Rig|Character Walk (1)
+      takeName: Character Rig|Character Walk
       internalID: 0
       firstFrame: 0
-      lastFrame: 19
+      lastFrame: 24
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
