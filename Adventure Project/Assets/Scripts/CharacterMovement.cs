@@ -74,10 +74,12 @@ public class CharacterMovement : MonoBehaviour
         if (controller.isGrounded && Input.GetButton("Jump"))
         {
             jumpVelocity = 10f;
+            animator.SetBool("isAirborne", true);
         }
         else if (controller.isGrounded)
         {
             jumpVelocity = -2f;
+            animator.SetBool("isAirborne", false);
         }
         else
         {
