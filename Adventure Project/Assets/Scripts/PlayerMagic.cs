@@ -9,6 +9,14 @@ public class PlayerMagic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButtonDown("fire2"))
+        {
+            Shoot();
+        }
+    }
+
+    void Shoot()
+    {
+        // Shooting logic
     }
 }
