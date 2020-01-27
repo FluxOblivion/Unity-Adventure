@@ -5,11 +5,12 @@ using UnityEngine;
 public class PlayerMagic : MonoBehaviour
 {
     public Transform shootPoint;
+    public GameObject projectile;
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("fire2"))
+        if (Input.GetButtonDown("Fire2"))
         {
             Shoot();
         }
@@ -18,5 +19,6 @@ public class PlayerMagic : MonoBehaviour
     void Shoot()
     {
         // Shooting logic
+        Instantiate(projectile, shootPoint.position, shootPoint.rotation);
     }
 }
