@@ -28,7 +28,7 @@ public class Projectile : MonoBehaviour
             case "Fire":
                 InteractFire fire = other.GetComponent<InteractFire>();
                 fire.Interact(true);
-                Debug.Log(other.name + " is lit.");
+                //Debug.Log(other.name + " is lit.");
                 break;
             case "Enemy":
                 EnemyStats enemy = other.GetComponent<EnemyStats>();
