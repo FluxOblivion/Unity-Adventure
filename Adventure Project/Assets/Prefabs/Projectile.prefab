@@ -91,7 +91,7 @@ BoxCollider:
   m_GameObject: {fileID: 5304869747548530087}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -110,7 +110,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
-  m_CollisionDetection: 1
+  m_CollisionDetection: 3
 --- !u!135 &5304869747548530081
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -136,3 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bb7885c7f26c41408025a0dc9e7b8a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 40
+  projectileDamage: 20
+  rb: {fileID: 0}
+  impactEffect: {fileID: 3507834479484016931, guid: 4e0871c091b954a498ffc32af1cfa993,
+    type: 3}

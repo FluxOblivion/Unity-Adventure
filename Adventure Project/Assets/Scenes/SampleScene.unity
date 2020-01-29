@@ -3286,7 +3286,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 8.72e-43, y: -1.0569851e+10, z: 8.72e-43, w: -0.0000012373548}
+  m_BoundingSphereOverride: {x: 0, y: 0.140625, z: 0.03125, w: -0.03125}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -3856,7 +3856,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792709038}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.89, y: 4.12, z: -6.3700004}
+  m_LocalPosition: {x: 7.89, y: 4.12, z: -7.05}
   m_LocalScale: {x: 6.0479, y: 6.0479, z: 6.0479}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3880,7 +3880,7 @@ GameObject:
   - component: {fileID: 803665468}
   m_Layer: 0
   m_Name: Fire Sphere (01)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8883,7 +8883,7 @@ GameObject:
   - component: {fileID: 879026721}
   m_Layer: 0
   m_Name: Fire Sphere (02)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13638,7 +13638,7 @@ MonoBehaviour:
   interactionTransform: {fileID: 879026728}
   hasInteracted: 0
   fireParticles: {fileID: 0}
-  isLit: 1
+  isLit: 0
 --- !u!135 &879026725
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -14668,7 +14668,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 4.117e-42, y: 0, z: 1.4e-43, w: 0.125}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -22398,7 +22398,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543632381}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.62, y: 4.12, z: -6.37}
+  m_LocalPosition: {x: -5.62, y: 4.12, z: -7.12}
   m_LocalScale: {x: 6.0479, y: 6.0479, z: 6.0479}
   m_Children: []
   m_Father: {fileID: 0}
@@ -24923,7 +24923,7 @@ GameObject:
   - component: {fileID: 1869144947}
   m_Layer: 0
   m_Name: Fire Sphere (03)
-  m_TagString: Untagged
+  m_TagString: Fire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29678,7 +29678,7 @@ MonoBehaviour:
   interactionTransform: {fileID: 1869144954}
   hasInteracted: 0
   fireParticles: {fileID: 0}
-  isLit: 1
+  isLit: 0
 --- !u!135 &1869144951
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -31185,6 +31185,11 @@ PrefabInstance:
     - target: {fileID: 1036567274363250556, guid: a79db3d2377b66d4dadb7dbef712cf23,
         type: 3}
       propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1036567274363250556, guid: a79db3d2377b66d4dadb7dbef712cf23,
+        type: 3}
+      propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 1036567274363250558, guid: a79db3d2377b66d4dadb7dbef712cf23,

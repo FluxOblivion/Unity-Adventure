@@ -41,4 +41,31 @@ public class InteractFire : Interactable
             isLit = true;
         }
     }
+
+    public void Interact(bool fireState)
+    {
+
+        if (fireState == true)
+        {
+            if (fireParticles.isPlaying)
+            {
+                return;
+            } else
+            {
+                fireParticles.Play();
+                fireState = true;
+            }
+        }
+        else if (fireState == false)
+        {
+            if (!fireParticles.isPlaying)
+            {
+                return;
+            } else
+            {
+                fireParticles.Stop();
+                fireState = false;
+            }
+        }
+    }
 }
