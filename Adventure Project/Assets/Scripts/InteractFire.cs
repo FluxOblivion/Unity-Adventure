@@ -40,8 +40,6 @@ public class InteractFire : Interactable
             fireParticles.Play();
             isLit = true;
         }
-
-        hasInteracted = true;
     }
 
     public void Interact(bool fireState)
@@ -69,7 +67,5 @@ public class InteractFire : Interactable
                 fireState = false;
             }
         }
-
-        hasInteracted = true;
     }
 }
