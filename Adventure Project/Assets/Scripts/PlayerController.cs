@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     Camera cam;
     CharacterMovement motor;
     CharacterController controller;
+    PlayerStats stats;
 
     Interactable focus;
 
@@ -21,6 +22,7 @@ public class PlayerController : MonoBehaviour
         cam = Camera.main;
         motor = GetComponent<CharacterMovement>();
         controller = GetComponent<CharacterController>();
+        stats = GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
@@ -32,6 +34,15 @@ public class PlayerController : MonoBehaviour
             {
                 if (focus != null)
                 {
+                    //if (focus.GetComponent<InteractFire>() != null && focus.GetComponent<InteractFire>().isLit == true)
+                    //{
+                    //    focus.Interact();
+                    //    stats.GainMana(20);
+                    //} else
+                    //{
+                    //    focus.Interact();
+                    //}
+
                     focus.Interact();
                 }
 

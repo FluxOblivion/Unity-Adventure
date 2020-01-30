@@ -14,6 +14,7 @@ public class InteractSwitch : Interactable
     {
         fire = GetComponent<InteractFire>();
         manager = attachedObject.GetComponent<SwitchManager>();
+        hasInteracted = false;
     }
 
     // Update is called once per frame

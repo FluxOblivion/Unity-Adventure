@@ -1350,6 +1350,7 @@ MonoBehaviour:
   shootPoint: {fileID: 247062044}
   projectile: {fileID: 5304869747548530087, guid: 99411bb1fbf9e324894efe1414ccc3f2,
     type: 3}
+  stats: {fileID: 0}
 --- !u!1 &247062043
 GameObject:
   m_ObjectHideFlags: 0

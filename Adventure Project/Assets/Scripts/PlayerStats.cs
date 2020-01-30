@@ -32,6 +32,24 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
+    public void TakeDamage(int damageTaken)
+    {
+        playerHealth -= (damageTaken - playerArmour);
+        manager.UpdateHealthbar(playerHealth);
+    }
+
+    public void UseMana(int manaAmount)
+    {
+        playerMana -= manaAmount;
+        manager.UpdateManabar(playerMana);
+    }
+
+    public void GainMana(int manaAmount)
+    {
+        playerMana += manaAmount;
+        manager.UpdateManabar(playerMana);
+    }
+
     private IEnumerator OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.collider.name == "DeathPlane")
