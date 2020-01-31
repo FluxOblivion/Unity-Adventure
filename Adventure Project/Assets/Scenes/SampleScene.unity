@@ -8637,6 +8637,7 @@ MonoBehaviour:
   hasInteracted: 0
   fireParticles: {fileID: 0}
   isLit: 0
+  fireSwitch: {fileID: 0}
 --- !u!135 &803665473
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -13641,6 +13642,7 @@ MonoBehaviour:
   hasInteracted: 0
   fireParticles: {fileID: 0}
   isLit: 0
+  fireSwitch: {fileID: 0}
 --- !u!135 &879026725
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -21900,8 +21902,8 @@ MonoBehaviour:
   interactionTransform: {fileID: 1430341427}
   hasInteracted: 0
   interactGate: {fileID: 1430341420}
-  openPosition: {x: 0, y: 5, z: 0}
-  closedPosition: {x: 0, y: -5, z: 0}
+  openPosition: {x: 0, y: 7, z: 0}
+  closedPosition: {x: 0, y: -7, z: 0}
   animator: {fileID: 0}
 --- !u!114 &1430341422
 MonoBehaviour:
@@ -29865,6 +29867,7 @@ MonoBehaviour:
   hasInteracted: 0
   fireParticles: {fileID: 0}
   isLit: 0
+  fireSwitch: {fileID: 0}
 --- !u!135 &1869144951
 SphereCollider:
   m_ObjectHideFlags: 0

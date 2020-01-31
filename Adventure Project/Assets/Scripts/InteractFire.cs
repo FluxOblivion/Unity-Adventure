@@ -7,10 +7,13 @@ public class InteractFire : Interactable
     public ParticleSystem fireParticles;
     public bool isLit = false;
 
+    public InteractSwitch fireSwitch;
+
     // Start is called before the first frame update
     void Start()
     {
         fireParticles = GetComponent<ParticleSystem>();
+        fireSwitch = GetComponent<InteractSwitch>();
 
         if (!isLit)
         {
@@ -41,12 +44,18 @@ public class InteractFire : Interactable
             isLit = true;
         }
 
+        if (fireSwitch != null)
+        {
+            //Debug.Log("Triggered switch.");
+            fireSwitch.Interact();
+        }
+
         hasInteracted = true;
     }
 
     public void Interact(bool fireState)
     {
-
+        // Problem might be here for projectile switch triggering
         if (fireState == true)
         {
             if (fireParticles.isPlaying)
@@ -54,8 +63,9 @@ public class InteractFire : Interactable
                 return;
             } else
             {
+                //Debug.Log("Fire started.");
                 fireParticles.Play();
-                fireState = true;
+                isLit = true;
             }
         }
         else if (fireState == false)
@@ -65,9 +75,16 @@ public class InteractFire : Interactable
                 return;
             } else
             {
+                //Debug.Log("Fire stopped.");
                 fireParticles.Stop();
-                fireState = false;
+                isLit = false;
             }
+        }
+
+        if (fireSwitch != null)
+        {
+            //Debug.Log("Triggered switch.");
+            fireSwitch.Interact();
         }
 
         hasInteracted = true;

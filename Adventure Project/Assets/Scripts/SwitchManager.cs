@@ -18,6 +18,8 @@ public class SwitchManager : MonoBehaviour
     {
         int flippedSwitches = 0;
 
+        Debug.Log("Checking for solve...");
+
         foreach (GameObject currentObject in switchObjects)
         {
 
