@@ -45,6 +45,7 @@ public class DialogueManager : MonoBehaviour
 
     private void Update()
     {
+        //change to event?
         if (player.interacting == true)
         {
             if (Input.GetKeyDown(KeyCode.KeypadEnter))
@@ -79,7 +80,7 @@ public class DialogueManager : MonoBehaviour
 
         DisplayNextSentence();
 
-        player.interacting = true;
+        //player.ControlToggle();
 
     }
 
@@ -126,7 +127,6 @@ public class DialogueManager : MonoBehaviour
         {
             portraitRight.sprite = currentNode.portraitRight;
         }
-        // Set portrait
     }
 
     //public void DisplayNextSentence(int choice)
@@ -153,7 +153,7 @@ public class DialogueManager : MonoBehaviour
         dialogueVisibility.alpha = 0f;
         dialogueVisibility.blocksRaycasts = false;
 
-        player.interacting = false;
+        //player.interacting = false;
     }
 
 }

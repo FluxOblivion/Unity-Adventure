@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     CharacterMovement motor;
     CharacterController controller;
     PlayerStats stats;
+    Animator animator;
 
     Interactable focus;
 
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
         motor = GetComponent<CharacterMovement>();
         controller = GetComponent<CharacterController>();
         stats = GetComponent<PlayerStats>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -73,6 +75,7 @@ public class PlayerController : MonoBehaviour
         {
             focus = intObject;
             Debug.Log("In range of interactable object.");
+            //other.GetComponent<Material>().shader = Shader.Find("Interact highlight");
         }
 
     }
@@ -80,19 +83,25 @@ public class PlayerController : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         focus = null;
+        //other.GetComponent<Material>().shader = Shader.Find("Lightweight Render Pipeline/Lit");
     }
 
     public void ControlToggle()
     {
+        //will need better management of animations later
         if (interacting == false)
         {
             interacting = true;
-            motor.enabled = !motor.enabled;
+            motor.enabled = false;
+            animator.enabled = false;
+            Debug.Log("Control has been disabled.");
         }
         else
         {
             interacting = false;
-            motor.enabled = !motor.enabled;
+            motor.enabled = true;
+            animator.enabled = true;
+            Debug.Log("Control has been enabled.");
         }
 }
 
