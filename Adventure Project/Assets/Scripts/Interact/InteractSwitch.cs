@@ -21,24 +21,6 @@ public class InteractSwitch : Interactable
     void Update()
     {
 
-        //Something wrong with this; isn't executing Debug lines
-        //if (fire.isLit == true)
-        //{
-        //    if (hasInteracted == false)
-        //    {
-        //        Debug.Log("Fire has been lit.");
-        //        this.hasInteracted = true;
-        //        manager.CheckForSolve();
-        //    }
-        //} else if (fire.isLit == false)
-        //{
-        //    if (this.hasInteracted == true)
-        //    {
-        //        Debug.Log("Fire has been snuffed out.");
-        //        this.hasInteracted = false;
-        //        manager.CheckForSolve();
-        //    }
-        //}
     }
 
     public override void Interact()
