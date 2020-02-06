@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         stats = GetComponent<PlayerStats>();
         animator = GetComponent<Animator>();
+
+        GameEvents.current.onDialogueStart += ControlToggle;
+        GameEvents.current.onDialogueEnd += ControlToggle;
     }
 
     // Update is called once per frame
@@ -89,6 +92,7 @@ public class PlayerController : MonoBehaviour
     public void ControlToggle()
     {
         //will need better management of animations later
+        Debug.Log("ControlToggle called.");
         if (interacting == false)
         {
             interacting = true;
@@ -103,6 +107,11 @@ public class PlayerController : MonoBehaviour
             animator.enabled = true;
             Debug.Log("Control has been enabled.");
         }
-}
+    }
 
+    private void OnDestroy()
+    {
+        GameEvents.current.onDialogueStart -= ControlToggle;
+        GameEvents.current.onDialogueEnd -= ControlToggle;
+    }
 }

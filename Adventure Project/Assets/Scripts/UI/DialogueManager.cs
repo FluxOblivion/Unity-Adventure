@@ -21,7 +21,9 @@ public class DialogueManager : MonoBehaviour
 
     #endregion
 
-    public PlayerController player;
+    bool dialogueActive = false;
+
+    //public PlayerController player;
     public Canvas dialogueBox;
     CanvasGroup dialogueVisibility;
 
@@ -41,12 +43,15 @@ public class DialogueManager : MonoBehaviour
         sentences = new Queue<string>();
         nodes = new Queue<DialogueNode>();
         dialogueVisibility = dialogueBox.GetComponent<CanvasGroup>();
+
+        GameEvents.current.onDialogueStart += DialogueStart;
+        GameEvents.current.onDialogueEnd += DialogueEnd;
     }
 
     private void Update()
     {
         //change to event?
-        if (player.interacting == true)
+        if (dialogueActive == true)
         {
             if (Input.GetKeyDown(KeyCode.KeypadEnter))
             {
@@ -55,11 +60,11 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    public void StartDialogue(Dialogue dialogue)
+    public void InputNewDialogue(Dialogue dialogue)
     {
         //Debug.Log("Starting converstation with " + dialogue.name);
 
-        player.ControlToggle();
+        //player.ControlToggle();
 
         //nameText.text = dialogue.name;
 
@@ -75,10 +80,10 @@ public class DialogueManager : MonoBehaviour
             nodes.Enqueue(node);
         }
 
-        dialogueVisibility.alpha = 1f;
-        dialogueVisibility.blocksRaycasts = true;
+        //dialogueVisibility.alpha = 1f;
+        //dialogueVisibility.blocksRaycasts = true;
 
-        DisplayNextSentence();
+        //DisplayNextSentence();
 
         //player.ControlToggle();
 
@@ -98,7 +103,8 @@ public class DialogueManager : MonoBehaviour
 
         if (nodes.Count == 0)
         {
-            EndDialogue();
+            GameEvents.current.DialogueEnd();
+            //EndDialogue();
             return;
         }
 
@@ -148,7 +154,7 @@ public class DialogueManager : MonoBehaviour
     void EndDialogue()
     {
         //Debug.Log("End of conversation.");
-        player.ControlToggle();
+        //player.ControlToggle();
 
         dialogueVisibility.alpha = 0f;
         dialogueVisibility.blocksRaycasts = false;
@@ -156,4 +162,25 @@ public class DialogueManager : MonoBehaviour
         //player.interacting = false;
     }
 
+    void DialogueStart()
+    {
+        dialogueVisibility.alpha = 1f;
+        dialogueVisibility.blocksRaycasts = true;
+        dialogueActive = true;
+
+        DisplayNextSentence();
+    }
+
+    void DialogueEnd()
+    {
+        dialogueVisibility.alpha = 0f;
+        dialogueVisibility.blocksRaycasts = false;
+        dialogueActive = false;
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.current.onDialogueStart -= DialogueStart;
+        GameEvents.current.onDialogueEnd -= DialogueEnd;
+    }
 }
