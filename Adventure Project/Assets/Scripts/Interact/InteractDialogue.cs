@@ -18,6 +18,7 @@ public class InteractDialogue : Interactable
     {
         //base.Interact();
         //FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        //Anything else needed?
 
         DialogueManager.instance.InputNewDialogue(dialogue);
         GameEvents.current.DialogueStart();
