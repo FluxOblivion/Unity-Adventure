@@ -124,7 +124,7 @@ public class CharacterMovement : MonoBehaviour
     {
         if(hit.gameObject.tag != "Ground")
         {
-            Debug.Log("Collided with: " + hit.gameObject.name);
+            //Debug.Log("Collided with: " + hit.gameObject.name);
         }
 
         //if (hit.collider.name == "DeathPlane")

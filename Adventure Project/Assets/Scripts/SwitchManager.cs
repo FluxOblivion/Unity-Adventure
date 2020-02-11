@@ -79,7 +79,7 @@ public class SwitchManager : MonoBehaviour
         int flippedSwitches = 0;
         //InteractSwitch currentSwitch;
 
-        //Debug.Log("Checking for solve...");
+        Debug.Log("Checking for solve...");
 
         foreach (InteractSwitch currentSwitch in switchObjectArray)
         {

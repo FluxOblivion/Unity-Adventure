@@ -19,7 +19,7 @@ public class Projectile : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Projectile collided with: " + other.name);
+        //Debug.Log("Projectile collided with: " + other.name);
 
         switch (other.tag)
         {

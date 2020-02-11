@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour
         if (intObject != null)
         {
             focus = intObject;
-            Debug.Log("In range of interactable object.");
+            //Debug.Log("In range of interactable object.");
             //other.GetComponent<Material>().shader = Shader.Find("Interact highlight");
         }
 

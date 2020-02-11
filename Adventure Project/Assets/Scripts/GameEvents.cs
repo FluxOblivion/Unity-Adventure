@@ -54,6 +54,12 @@ public class GameEvents : MonoBehaviour
         //Check if switch id matches? Or do that in each Switch manager?
     }
 
+    //Aiming state
+
+    //Blocking state
+
+    //Dialog state?
+
     //On damage taken
 
     //On mana used
