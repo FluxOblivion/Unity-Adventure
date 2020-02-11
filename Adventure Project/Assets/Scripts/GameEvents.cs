@@ -43,6 +43,17 @@ public class GameEvents : MonoBehaviour
         }
     }
 
+    //On switch tirggered
+    public event Action<int, int> onSwitchTriggered;
+    public void SwitchTriggered(int id, int door)
+    {
+        if (onSwitchTriggered != null)
+        {
+            onSwitchTriggered(id, door);
+        }
+        //Check if switch id matches? Or do that in each Switch manager?
+    }
+
     //On damage taken
 
     //On mana used

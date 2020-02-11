@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class InteractSwitch : Interactable
 {
+    public int switchId;
+    public int doorId;
+
     public InteractFire fire;
     SwitchManager manager;
 
@@ -33,7 +36,8 @@ public class InteractSwitch : Interactable
             {
                 //Debug.Log("Fire has been lit.");
                 this.hasInteracted = true;
-                manager.CheckForSolve();
+                //manager.CheckForSolve();
+                GameEvents.current.SwitchTriggered(switchId, doorId);
             }
         } else if (fire.isLit == false)
         {
@@ -41,7 +45,8 @@ public class InteractSwitch : Interactable
             {
                 //Debug.Log("Fire has been snuffed out.");
                 this.hasInteracted = false;
-                manager.CheckForSolve();
+                //manager.CheckForSolve();
+                GameEvents.current.SwitchTriggered(switchId, doorId);
             }
         }
     }
