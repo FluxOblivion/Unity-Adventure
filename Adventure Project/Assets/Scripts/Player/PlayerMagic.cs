@@ -8,6 +8,8 @@ public class PlayerMagic : MonoBehaviour
     public GameObject projectile;
     public PlayerStats stats;
 
+    public bool aiming = false;
+
 
     private void Start()
     {
@@ -24,9 +26,21 @@ public class PlayerMagic : MonoBehaviour
                 Debug.Log("Out of mana.");
             } else
             {
+                GameEvents.current.AimingStart();
+                aiming = true;
+            }
+        }
+        if (Input.GetButtonUp("Fire2"))
+        {
+            if (aiming)
+            {
                 Shoot();
                 stats.UseMana(5);
+
+                aiming = false;
             }
+
+            GameEvents.current.AimingEnd();
         }
     }
 

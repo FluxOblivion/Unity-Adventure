@@ -55,6 +55,24 @@ public class GameEvents : MonoBehaviour
     }
 
     //Aiming state
+    public event Action onAimingStart;
+    public void AimingStart()
+    {
+        if (onAimingStart != null)
+        {
+            onAimingStart();
+        }
+    }
+
+    //Stop aiming state
+    public event Action onAimingEnd;
+    public void AimingEnd()
+    {
+        if (onAimingEnd != null)
+        {
+            onAimingEnd();
+        }
+    }
 
     //Blocking state
 

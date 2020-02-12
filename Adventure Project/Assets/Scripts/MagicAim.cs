@@ -9,10 +9,12 @@ public class MagicAim : MonoBehaviour
     // speed is the rate at which the object will rotate
     public float speed;
 
+    //public bool aiming = false;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -43,5 +45,15 @@ public class MagicAim : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, speed * Time.deltaTime);
         }
     }
+
+    //public void EnterAimState()
+    //{
+    //    aiming = true;
+    //}
+
+    //public void ExitAimState()
+    //{
+    //    aiming = false;
+    //}
 
 }

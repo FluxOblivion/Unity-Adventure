@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     CharacterController controller;
     PlayerStats stats;
     Animator animator;
+    MagicAim aimState;
 
     Interactable focus;
 
@@ -25,17 +26,21 @@ public class PlayerController : MonoBehaviour
         controller = GetComponent<CharacterController>();
         stats = GetComponent<PlayerStats>();
         animator = GetComponent<Animator>();
+        aimState = GetComponent<MagicAim>();
 
+        
         GameEvents.current.onDialogueStart += ControlToggle;
         GameEvents.current.onDialogueEnd += ControlToggle;
+        GameEvents.current.onAimingStart += ControlToggle;
+        GameEvents.current.onAimingEnd += ControlToggle;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (interacting == false)
+        if (!interacting)
         {
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetKey(KeyCode.E))
             {
                 if (focus != null)
                 {
@@ -96,16 +101,22 @@ public class PlayerController : MonoBehaviour
         if (interacting == false)
         {
             interacting = true;
-            motor.enabled = false;
-            animator.enabled = false;
-            Debug.Log("Control has been disabled.");
+            //motor.enabled = false;
+            //animator.enabled = false;
+            animator.SetBool("isInteracting", true);
+            aimState.enabled = true;
+            Time.timeScale = 0.3f;
+            //Debug.Log("Control has been disabled.");
         }
         else
         {
             interacting = false;
-            motor.enabled = true;
-            animator.enabled = true;
-            Debug.Log("Control has been enabled.");
+            //motor.enabled = true;
+            //animator.enabled = true;
+            animator.SetBool("isInteracting", false);
+            aimState.enabled = false;
+            Time.timeScale = 1f;
+            //Debug.Log("Control has been enabled.");
         }
     }
 
@@ -113,5 +124,7 @@ public class PlayerController : MonoBehaviour
     {
         GameEvents.current.onDialogueStart -= ControlToggle;
         GameEvents.current.onDialogueEnd -= ControlToggle;
+        GameEvents.current.onAimingStart -= ControlToggle;
+        GameEvents.current.onAimingEnd -= ControlToggle;
     }
 }

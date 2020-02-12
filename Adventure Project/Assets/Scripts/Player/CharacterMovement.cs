@@ -29,6 +29,8 @@ public class CharacterMovement : MonoBehaviour
     float jumpVelocity = -2f;
     public float gravity = 30f;
 
+    bool stopMovement = false;
+
     public CharacterController controller;
     public Animator animator;
 
@@ -38,86 +40,95 @@ public class CharacterMovement : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+
+        GameEvents.current.onAimingStart += DisableMovement;
+        GameEvents.current.onAimingEnd += EnableMovement;
+        GameEvents.current.onDialogueStart += DisableMovement;
+        GameEvents.current.onDialogueEnd += EnableMovement;
     }
 
     //  Update is called once per frame
     void Update()
     {
-        //Checking double tap for dash
-        doubleClick = false;
-
-        if (Input.anyKeyDown)
+        if (!stopMovement)
         {
-            CheckDoubleTap();
+            //Checking double tap for dash
+            doubleClick = false;
+
+            if (Input.anyKeyDown)
+            {
+                CheckDoubleTap();
+            }
+
+            timeBetweenTicks = Time.time;
+
+            //  Getting player input Vectors and adding to new position
+            float inputX = Input.GetAxis("Horizontal");
+            float inputZ = Input.GetAxis("Vertical");
+
+            //Check for player input to enable animations
+            if (inputX != 0 || inputZ != 0)
+            {
+                animator.SetInteger("isMoving", 1);
+            }
+            else
+            {
+                animator.SetInteger("isMoving", 0);
+            }
+
+            float moveX = inputX * moveSpeed * Time.deltaTime;
+            float moveZ = inputZ * moveSpeed * Time.deltaTime;
+            movePosition = new Vector3(moveX, 0f, moveZ);
+
+            //  Checking if on ground for jumping/velocity
+            if (controller.isGrounded && Input.GetButton("Jump"))
+            {
+                jumpVelocity = 10f;
+                animator.SetBool("isAirborne", true);
+            }
+            else if (controller.isGrounded)
+            {
+                jumpVelocity = -2f;
+                animator.SetBool("isAirborne", false);
+            }
+            else
+            {
+                jumpVelocity -= gravity * Time.deltaTime;
+            }
+
+            movePosition.y = jumpVelocity * Time.deltaTime;
+
+            //  Adjusting rotation of character to match direction of movement (Broken)
+            desiredRotation = Quaternion.LookRotation(movePosition);
+            desiredRotation.x = 0f;
+            desiredRotation.z = 0f;
+            if (controller.velocity.x != 0f || controller.velocity.z != 0f)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, smoothSpeed);
+            }
+
+            //  Dash or normal movement
+            if (doubleClick && !dashDelay && controller.isGrounded)
+            {
+                Dash();
+            }
+            else
+            {
+                controller.Move(movePosition);
+            }
+            //if (dashTime >= 0)
+            //{
+            //    dashTime -= Time.deltaTime;
+            //    controller.Move(movePosition * dashSpeed);
+
+            //}
+            //else
+            //{
+            //    controller.Move(movePosition);
+            //}
+
+            //controller.Move(movePosition);
         }
-
-        timeBetweenTicks = Time.time;
-
-        //  Getting player input Vectors and adding to new position
-        float inputX = Input.GetAxis("Horizontal");
-        float inputZ = Input.GetAxis("Vertical");
-
-        //Check for player input to enable animations
-        if (inputX != 0 || inputZ != 0)
-        {
-            animator.SetInteger("isMoving", 1);
-        } else
-        {
-            animator.SetInteger("isMoving", 0);
-        }
-
-        float moveX = inputX * moveSpeed * Time.deltaTime;
-        float moveZ = inputZ * moveSpeed * Time.deltaTime;
-        movePosition = new Vector3(moveX, 0f, moveZ);
-
-        //  Checking if on ground for jumping/velocity
-        if (controller.isGrounded && Input.GetButton("Jump"))
-        {
-            jumpVelocity = 10f;
-            animator.SetBool("isAirborne", true);
-        }
-        else if (controller.isGrounded)
-        {
-            jumpVelocity = -2f;
-            animator.SetBool("isAirborne", false);
-        }
-        else
-        {
-            jumpVelocity -= gravity * Time.deltaTime;
-        }
-
-        movePosition.y = jumpVelocity * Time.deltaTime;
-
-        //  Adjusting rotation of character to match direction of movement (Broken)
-        desiredRotation = Quaternion.LookRotation(movePosition);
-        desiredRotation.x = 0f;
-        desiredRotation.z = 0f;
-        if (controller.velocity.x != 0f || controller.velocity.z != 0f)
-        {
-            transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotation, smoothSpeed);
-        }
-
-        //  Dash or normal movement
-        if (doubleClick && !dashDelay && controller.isGrounded)
-        {
-            Dash();
-        }
-        else
-        {
-            controller.Move(movePosition);
-        }
-        //if (dashTime >= 0)
-        //{
-        //    dashTime -= Time.deltaTime;
-        //    controller.Move(movePosition * dashSpeed);
-
-        //}
-        //else
-        //{
-        //    controller.Move(movePosition);
-        //}
-
-        //controller.Move(movePosition);
     }
 
     private IEnumerator OnControllerColliderHit(ControllerColliderHit hit)
@@ -291,6 +302,24 @@ public class CharacterMovement : MonoBehaviour
                 rightCount++;
             }
         }
+    }
+
+    public void DisableMovement()
+    {
+        stopMovement = true;
+    }
+
+    public void EnableMovement()
+    {
+        stopMovement = false;
+    }
+
+    private void OnDestroy()
+    {
+        GameEvents.current.onAimingStart -= DisableMovement;
+        GameEvents.current.onAimingEnd -= EnableMovement;
+        GameEvents.current.onDialogueStart -= DisableMovement;
+        GameEvents.current.onDialogueEnd -= EnableMovement;
     }
 
     //private IEnumerator RotateCharacter(Quaternion start, Quaternion end)
