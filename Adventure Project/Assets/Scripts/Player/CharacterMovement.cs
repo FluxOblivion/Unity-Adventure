@@ -69,11 +69,11 @@ public class CharacterMovement : MonoBehaviour
             //Check for player input to enable animations
             if (inputX != 0 || inputZ != 0)
             {
-                animator.SetInteger("isMoving", 1);
+                animator.SetBool("isMoving", true);
             }
             else
             {
-                animator.SetInteger("isMoving", 0);
+                animator.SetBool("isMoving", false);
             }
 
             float moveX = inputX * moveSpeed * Time.deltaTime;

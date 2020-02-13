@@ -31,8 +31,8 @@ public class PlayerController : MonoBehaviour
         
         GameEvents.current.onDialogueStart += ControlToggle;
         GameEvents.current.onDialogueEnd += ControlToggle;
-        GameEvents.current.onAimingStart += ControlToggle;
-        GameEvents.current.onAimingEnd += ControlToggle;
+        GameEvents.current.onAimingStart += AimToggle;
+        GameEvents.current.onAimingEnd += AimToggle;
     }
 
     // Update is called once per frame
@@ -97,7 +97,35 @@ public class PlayerController : MonoBehaviour
     public void ControlToggle()
     {
         //will need better management of animations later
-        Debug.Log("ControlToggle called.");
+        //Debug.Log("ControlToggle called.");
+        if (interacting == false)
+        {
+            interacting = true;
+            //motor.enabled = false;
+            //animator.enabled = false;
+            animator.SetBool("isInteracting", true);
+            animator.SetBool("isMoving", false);
+
+            //aimState.enabled = true;
+            //Time.timeScale = 0.3f;
+            //Debug.Log("Control has been disabled.");
+        }
+        else
+        {
+            ToggleDelay();
+            interacting = false;
+            //motor.enabled = true;
+            //animator.enabled = true;
+            animator.SetBool("isInteracting", false);
+            //aimState.enabled = false;
+            //Time.timeScale = 1f;
+            //Debug.Log("Control has been enabled.");
+        }
+    }
+
+    public void AimToggle()
+    {
+        //Debug.Log("ControlToggle called.");
         if (interacting == false)
         {
             interacting = true;
@@ -120,11 +148,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public IEnumerator ToggleDelay()
+    {
+        Debug.Log("Waiting...");
+        yield return new WaitForSeconds(3f);
+        Debug.Log("Waiting complete.");
+    }
+
     private void OnDestroy()
     {
         GameEvents.current.onDialogueStart -= ControlToggle;
         GameEvents.current.onDialogueEnd -= ControlToggle;
-        GameEvents.current.onAimingStart -= ControlToggle;
-        GameEvents.current.onAimingEnd -= ControlToggle;
+        GameEvents.current.onAimingStart -= AimToggle;
+        GameEvents.current.onAimingEnd -= AimToggle;
     }
 }
