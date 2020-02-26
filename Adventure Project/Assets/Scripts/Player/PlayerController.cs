@@ -72,6 +72,10 @@ public class PlayerController : MonoBehaviour
                 //}
             }
         }
+        else
+        {
+            //
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -112,7 +116,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            ToggleDelay();
+            //ToggleDelay();
             interacting = false;
             //motor.enabled = true;
             //animator.enabled = true;

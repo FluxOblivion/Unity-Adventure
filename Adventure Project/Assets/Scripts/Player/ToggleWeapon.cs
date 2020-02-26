@@ -16,7 +16,9 @@ public class ToggleWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack")
+            || animator.GetBool("isBlocking"))
         {
             weapon.SetActive(true);
         } else

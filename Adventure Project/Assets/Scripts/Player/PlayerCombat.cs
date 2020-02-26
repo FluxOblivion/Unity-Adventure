@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCombat : MonoBehaviour
 {
     public Animator animator;
+    public PlayerController controller;
 
     public Transform attackPoint;
     public float attackRange = 0.5f;
@@ -13,16 +14,36 @@ public class PlayerCombat : MonoBehaviour
     public float attackDamage = 10f;
     public float attackRate = 2f;
     float nextAttackTime = 0f;
+    bool isBlocking = false;
 
     // Update is called once per frame
     void Update()
     {
-        if (Time.time >= nextAttackTime)
+        if (!isBlocking)
         {
-            if (Input.GetButtonDown("Fire1"))
+            if (Input.GetButtonDown("Block"))
             {
-                Attack();
-                nextAttackTime = Time.time + 1f / attackRate;
+                //Change to Event; needs to trigger player controller as well
+                isBlocking = true;
+                animator.SetBool("isBlocking", true);
+                //controller.ControlToggle();
+            }
+            else if (Time.time >= nextAttackTime)
+            {
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    Attack();
+                    nextAttackTime = Time.time + 1f / attackRate;
+                }
+            }
+        }
+        else
+        {
+            if (Input.GetButtonUp("Block"))
+            {
+                isBlocking = false;
+                animator.SetBool("isBlocking", false);
+                //controller.ControlToggle();
             }
         }
     }
