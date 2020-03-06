@@ -23,10 +23,9 @@ public class PlayerCombat : MonoBehaviour
         {
             if (Input.GetButtonDown("Block"))
             {
-                //Change to Event; needs to trigger player controller as well
                 isBlocking = true;
                 animator.SetBool("isBlocking", true);
-                //controller.ControlToggle();
+                GameEvents.current.BlockStart();
             }
             else if (Time.time >= nextAttackTime)
             {
@@ -43,7 +42,7 @@ public class PlayerCombat : MonoBehaviour
             {
                 isBlocking = false;
                 animator.SetBool("isBlocking", false);
-                //controller.ControlToggle();
+                GameEvents.current.BlockEnd();
             }
         }
     }

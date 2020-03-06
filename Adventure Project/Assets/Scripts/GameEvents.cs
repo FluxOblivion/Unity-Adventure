@@ -75,6 +75,23 @@ public class GameEvents : MonoBehaviour
     }
 
     //Blocking state
+    public event Action onBlockStart;
+    public void BlockStart()
+    {
+        if (onBlockStart != null)
+        {
+            onBlockStart();
+        }
+    }
+
+    public event Action onBlockEnd;
+    public void BlockEnd()
+    {
+        if (onBlockEnd != null)
+        {
+            onBlockEnd();
+        }
+    }
 
     //Dialog state?
 

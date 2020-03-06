@@ -45,6 +45,8 @@ public class CharacterMovement : MonoBehaviour
         GameEvents.current.onAimingEnd += EnableMovement;
         GameEvents.current.onDialogueStart += DisableMovement;
         GameEvents.current.onDialogueEnd += EnableMovement;
+        GameEvents.current.onBlockStart += DisableMovement;
+        GameEvents.current.onBlockEnd += EnableMovement;
     }
 
     //  Update is called once per frame
@@ -320,6 +322,8 @@ public class CharacterMovement : MonoBehaviour
         GameEvents.current.onAimingEnd -= EnableMovement;
         GameEvents.current.onDialogueStart -= DisableMovement;
         GameEvents.current.onDialogueEnd -= EnableMovement;
+        GameEvents.current.onBlockStart -= DisableMovement;
+        GameEvents.current.onBlockEnd -= EnableMovement;
     }
 
     //private IEnumerator RotateCharacter(Quaternion start, Quaternion end)

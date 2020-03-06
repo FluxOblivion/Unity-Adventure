@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
 
     //public DialogueManager dialogueManager;
     public bool interacting = false;
+    public bool isBlocking = false;
 
 
     // Start is called before the first frame update
@@ -33,6 +34,8 @@ public class PlayerController : MonoBehaviour
         GameEvents.current.onDialogueEnd += ControlToggle;
         GameEvents.current.onAimingStart += AimToggle;
         GameEvents.current.onAimingEnd += AimToggle;
+        GameEvents.current.onBlockStart += BlockToggle;
+        GameEvents.current.onBlockEnd += BlockToggle;
     }
 
     // Update is called once per frame
@@ -152,6 +155,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void BlockToggle()
+    {
+        if (!isBlocking)
+        {
+            isBlocking = true;
+        } else
+        {
+            isBlocking = false;
+        }
+
+        //Have some effect if blocking?
+    }
+
     public IEnumerator ToggleDelay()
     {
         Debug.Log("Waiting...");
@@ -165,5 +181,7 @@ public class PlayerController : MonoBehaviour
         GameEvents.current.onDialogueEnd -= ControlToggle;
         GameEvents.current.onAimingStart -= AimToggle;
         GameEvents.current.onAimingEnd -= AimToggle;
+        GameEvents.current.onBlockStart -= BlockToggle;
+        GameEvents.current.onBlockEnd -= BlockToggle;
     }
 }
