@@ -12,7 +12,8 @@ public class InteractFire : Interactable
     // Start is called before the first frame update
     void Start()
     {
-        fireParticles = GetComponent<ParticleSystem>();
+        //fireParticles = GetComponent<ParticleSystem>();
+        fireParticles = GetComponentInChildren<ParticleSystem>();
         fireSwitch = GetComponent<InteractSwitch>();
 
         if (!isLit)
