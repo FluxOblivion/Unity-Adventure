@@ -21,7 +21,6 @@ public class SwitchManager : MonoBehaviour
 
         foreach (InteractSwitch currentSwitch in switchObjectArray)
         {
-
             if (currentSwitch.hasInteracted == true)
             {
                 flippedCount++;
