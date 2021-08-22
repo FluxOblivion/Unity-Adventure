@@ -18,7 +18,7 @@ public class AimToggle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Testing functionality?
     }
 
     public void EnablePointer()
